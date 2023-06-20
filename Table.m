@@ -14,4 +14,4 @@ outputtitle = {'Unit code','Unit name','Teaching block',...
     '1st (%)','2:1 (%)','2:2 (%)','3rd (%)','Fail (%)'};
 
 %% Export
-writecell([outputtitle;outputfiltered],strcat(code,'.xlsx'));
+writecell([outputtitle;outputfiltered],strcat(code,'.xlsx'),WriteMode="overwritesheet");

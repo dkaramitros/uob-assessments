@@ -1,11 +1,10 @@
 clc; close all;
 
 %% Export Options
-%range = [1:4];
 range = 1:units;
-export_emf = false;
-export_pdf = false;
-filter_flagged = true;
+export_emf = true;
+export_pdf = true;
+filter_flagged = false;
 filter_notavailable = true;
 
 %% Useful Variables
@@ -29,6 +28,8 @@ if sum(flags(i,:))>0 || ~filter_flagged
     %% Figure
     description = append(codes{i,1},': ',codes{i,2},' (',codes{i,3},')');
     fig = figure('Name',codes{i,1},'Units','centimeters','Position',[2,2,32,18]);
+    % Rectangle (for plotting purposes)
+    annotation('rectangle',[0,0,1,1],'Color','w')
     % Titles
     annotation('textbox',[0.05,0.8,0.9,.2],'String',description, ...
         'LineStyle','none','FontName','Rockwell','FontSize',32,'VerticalAlignment','middle')
@@ -113,7 +114,11 @@ if sum(flags(i,:))>0 || ~filter_flagged
         exportgraphics(fig,append(codes{i,1},'.emf'))
     end
     if export_pdf == true
-        exportgraphics(fig,append(code,'.pdf'),'Append',true)
+        if i==1
+            exportgraphics(fig,append(code,'.pdf'),'Append',false)
+        else
+            exportgraphics(fig,append(code,'.pdf'),'Append',true)
+        end
     end
 
 end
