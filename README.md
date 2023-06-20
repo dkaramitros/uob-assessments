@@ -1,6 +1,6 @@
 # Readme
 
-> This repository is for only useful for programme administration purposes at the University of Bristol.
+**This repository is for only useful for programme administration purposes at the University of Bristol.**
 
 This Matlab code can be used to analyse unit assessment statistics exported from eVision.
 
